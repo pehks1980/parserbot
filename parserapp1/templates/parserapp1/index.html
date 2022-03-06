@@ -1,0 +1,170 @@
+<head>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' />
+    <style>
+#main{max-width:1000px;margin:auto;padding:40px;}
+button{display:block}
+    </style>
+</head>
+<body>
+
+    <div id='main'>
+        <div class='row'>
+            <button id='startThread' class='btn btn-primary'>Start Parser</button>
+            <div style='clear:both'></div>
+        </div>
+
+        <div class='row'>
+            <p></p>
+        </div>
+
+         <div class='row'>
+            <button id='updateDb' class='btn btn-primary'>Update Db from csv</button>
+            <div style='clear:both'></div>
+        </div>
+
+        <div class='row'>
+            <p></p>
+        </div>
+
+        <div class='row'>
+            <button id='updateDbAll' class='btn btn-primary'>Update Db from All csv</button>
+            <div style='clear:both'></div>
+        </div>
+
+        <div class='row'>
+            <p></p>
+        </div>
+
+        <div class='row'>
+            <button id='startParseDb' class='btn btn-primary'>P&U (Parse and Update) no csv</button>
+            <div style='clear:both'></div>
+        </div>
+
+        <div class='row'>
+            <p></p>
+        </div>
+
+        <div class='row'>
+            <div id='thread_msg'></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            var currTask = 0
+            $('#startThread').on('click',function(){
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    url: "/parserapp1/startThread",
+                    dataType: "json",
+                    success: function(data) {
+                        var msg = $('<div id=" '+ data.id +'">').text('Task ' + data.id + ' working')
+                        $('#thread_msg').append(msg)
+                        var i = 0;
+                        var threadInterval = setInterval(function(){
+
+                            checkTask("/parserapp1/checkThread/" + data.id, function(check){
+                                if(check.is_done){
+                                    msg.text('Task ' + data.id + ' succeeded.')
+                                    window.clearInterval(threadInterval)
+                                    currTask = data.id
+                                }
+                                if(check.is_error){
+                                    msg.text('Task ' + data.id + ' error.')
+                                    window.clearInterval(threadInterval)
+
+                                }
+                                i++
+                            })
+                        },4000)
+                    }
+                })
+            })
+
+            function checkTask(url,cb){
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    url: url,
+                    dataType: "json",
+                    success: function(data) {
+                        cb(data)
+                    }
+                })
+            }
+
+            $('#updateDb').on('click',function(){
+                if (currTask == 0) {
+                    var msg = $('<div id="">').text('Nothing to update...')
+                    $('#thread_msg').append(msg)
+
+                }
+                else {
+
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        url: "/parserapp1/updateDb/" + currTask,
+                        dataType: "json",
+                        success: function(data) {
+                            var msg = $('<div id=" '+ data.res +'">').text('Pressed updating Db from csv - ' + data.res + ' (task '+ data.task+ ')')
+                            $('#thread_msg').append(msg)
+
+                        }
+                    })
+                }
+            })
+
+             $('#updateDbAll').on('click',function(){
+
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        url: "/parserapp1/updateDbAll/",
+                        dataType: "json",
+                        success: function(data) {
+                            var msg = $('<div id=" '+ data.res +'">').text('Pressed updating Db from All csv - ' + data.res + ' (task '+ data.tasks + ')')
+                            $('#thread_msg').append(msg)
+
+                        }
+                    })
+            })
+
+            $('#startParseDb').on('click',function(){
+                $.ajax({
+                    type: "GET",
+                    cache: false,
+                    url: "/parserapp1/startParseDb",
+                    dataType: "json",
+                    success: function(data) {
+                        var msg = $('<div id=" '+ data.id +'">').text('Task ' + data.id + ' working')
+                        $('#thread_msg').append(msg)
+                        var i = 0;
+                        var threadInterval = setInterval(function(){
+
+                            checkTask("/parserapp1/checkThread/" + data.id, function(check){
+                                if(check.is_done){
+                                    msg.text('Task ' + data.id + ' parsing done.')
+                                }
+                                if(check.db_updated){
+                                    msg.text('Task ' + data.id + ' P&U db updated, succeeded.')
+                                    window.clearInterval(threadInterval)
+
+                                }
+                                if(check.is_error){
+                                    msg.text('Task ' + data.id + ' P&U error.')
+                                    window.clearInterval(threadInterval)
+
+                                }
+                                i++
+                            })
+                        },4000)
+                    }
+                })
+            })
+
+        })
+    </script>
+</body>

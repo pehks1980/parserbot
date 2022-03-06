@@ -1,0 +1,57 @@
+2020-07-20 12:28:21.381609 task=<built-in function id>  : chrome driver : Message: session not created
+from disconnected: Unable to receive message from renderer
+  (Session info: headless chrome=84.0.4147.89)
+ 
+2020-07-20 12:28:21.394263 task=<built-in function id>  : chrome driver : Message: session not created
+from disconnected: Unable to receive message from renderer
+  (Session info: headless chrome=84.0.4147.89)
+ 
+2020-07-20 12:28:21.400902 task=<built-in function id>  : chrome driver : Message: session not created
+from disconnected: Unable to receive message from renderer
+  (Session info: headless chrome=84.0.4147.89)
+ 
+2020-07-20 12:39:18.777603 task=103  : chrome driver : Message: chrome not reachable
+  (Session info: headless chrome=84.0.4147.89)
+ 
+2020-07-20 12:39:29.966516 task=104  : chrome driver : Message: chrome not reachable
+  (Session info: headless chrome=84.0.4147.89)
+ 
+2020-07-20 12:39:29.967677 task=101  : chrome driver : Message: chrome not reachable
+  (Session info: headless chrome=84.0.4147.89)
+ 
+2020-07-20 12:39:29.968622 task=102  : chrome driver : Message: chrome not reachable
+  (Session info: headless chrome=84.0.4147.89)
+ 
+2020-07-20 12:57:49.028854 task=124  : chrome driver : Message: chrome not reachable
+  (Session info: headless chrome=84.0.4147.89)
+ 
+2020-08-05 12:02:28.715592 task=131  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2020-08-05 12:46:24.185568 task=132  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:44:06.392872 task=133  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:44:52.841425 task=134  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:45:07.684164 task=135  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:45:08.929957 task=136  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:45:09.794801 task=137  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:52:42.076155 task=138  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:52:42.732778 task=139  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:52:43.279675 task=140  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:52:43.787720 task=141  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:52:44.854225 task=142  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:57:50.915035 task=143  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:57:52.523852 task=144  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 
+2021-08-24 11:57:53.333034 task=145  : chrome driver : Message: unknown error: DevToolsActivePort file doesn't exist
+ 

@@ -1,0 +1,6 @@
+/env/
+.idea
+/parserapp1/__pycache__/
+/parserapp1/migrations/__pycache__/
+/ParserProject/__pycache__/
+/ParserProject/settings/__pycache__/

@@ -1,0 +1,31 @@
+Deployment install:
+1) download and install to env chromedriver
+run chr_install.sh скрипт работает из папки где есть папка 'venv' и chromedriver заносится в bin
+установка chromium browser на линуксе - sudo snap install chromium (X иметь не обязательно)
+
+2) check chrome driver - execute it if no errors then it is ok
+if not - install libraries needed:
+sudo apt-get install libnss3-dev
+3) set varialble add 'parserapp1' folder to PYTHONPATH:
+export PYTHONPATH="${PYTHONPATH}:/home/user/stazh/parserbot/parserapp1"
+(can be added to activate script in env), for eg:
+echo 'export PYTHONPATH="${PYTHONPATH}:/home/user/stazh/parserbot/parserapp1"' >> venv/bin/activate
+echo 'echo PYTHONPATH = $PYTHONPATH' >> venv/bin/activate
+
+suppose we have package in folder '/home/user/stazh/' and  venv folder is just _up_ one level from parserbot folder
+user@user-HP-Pavilion-17-Notebook-PC:~/stazh$ ls
+chr_install.sh  ngrok  ngrok.zip  parserbot  parserbot.zip  router.tar.gz  selebsparser  selebsparser.tar.gz  telebot.zip  venv <<<<<<<<< that folder
+
+execute echo commands to add variable PYTHONPATH setting:
+
+user@user-HP-Pavilion-17-Notebook-PC:~/stazh$ echo 'export PYTHONPATH="${PYTHONPATH}:/home/user/stazh/parserbot/parserapp1"' >> venv/bin/activate
+user@user-HP-Pavilion-17-Notebook-PC:~/stazh$ echo 'echo PYTHONPATH = $PYTHONPATH' >> venv/bin/activate
+
+#activate virtual environment:
+user@user-HP-Pavilion-17-Notebook-PC:~/stazh$ source venv/bin/activate
+PYTHONPATH = :/home/user/stazh/parserbot/parserapp1 <<<<<<<<<<<< shows that variable set correctly
+(venv) user@user-HP-Pavilion-17-Notebook-PC:~/stazh$
+
+основной фукционал реализован в контроллере: startParseDb(request): ( ParseAndUpdateDb )
+
+
